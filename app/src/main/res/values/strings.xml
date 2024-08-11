@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">HomeTec</string>
+    <string-array name="top_menu_options">
+        <item>Settings</item>
+        <item>Help</item>
+        <item>Scale</item>
+    </string-array>
+</resources>
