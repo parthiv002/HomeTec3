@@ -7,10 +7,9 @@
     tools:context=".MainActivity"
     android:background="@color/white">
 
-
     <!-- Left-side Options with CardViews -->
-
     <LinearLayout
+        android:elevation="10dp"
         android:id="@+id/leftMenu"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -173,43 +172,57 @@
         </androidx.cardview.widget.CardView>
     </LinearLayout>
 
-    <!-- Drawing Area -->
-    <com.example.hometec.customview.CustomView
-        android:id="@+id/customView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="8dp"
-        android:background="@color/white"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/leftMenu"
-        app:layout_constraintEnd_toStartOf="@+id/topMenu" />
-
+    <!-- Top-right Menu -->
     <!-- Top-right Menu -->
     <LinearLayout
         android:id="@+id/topMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_alignParentEnd="true"
         android:layout_margin="8dp"
         android:gravity="end"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <!-- Drop-down Menu -->
-        <Spinner
-            android:id="@+id/spinnerMenu"
+        <!-- Add this inside your existing LinearLayout for buttons -->
+        <Button
+            android:id="@+id/btnToggle3D"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:entries="@array/top_menu_options" />
+            android:text="Toggle 3D"
+            android:layout_marginEnd="6dp"/>
+
 
         <!-- Reset Button -->
         <Button
             android:id="@+id/btnReset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Reset"
-            android:layout_marginStart="16dp"/>
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+            android:text="Reset" />
 
+        <!-- Save Button -->
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:layout_marginStart="6dp"/>
+    </LinearLayout>
+
+
+    <!-- Drawing Area -->
+    <com.example.hometec.customview.CustomView
+        android:id="@+id/customView"
+        android:layout_width="312dp"
+        android:layout_height="724dp"
+        android:layout_margin="8dp"
+        android:background="@color/white"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/leftMenu"
+        app:layout_constraintTop_toBottomOf="@+id/topMenu"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,5 @@
 package com.example.hometec
 
-import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +22,8 @@ class MainActivity : AppCompatActivity() {
         val cardArchitecture = findViewById<CardView>(R.id.cardArchitecture)
         val cardObjects = findViewById<CardView>(R.id.cardObjects)
         val btnReset = findViewById<Button>(R.id.btnReset)
+        val btnSave = findViewById<Button>(R.id.btnSave)
+        val btnToggle3D = findViewById<Button>(R.id.btnToggle3D)
 
         cardLand.setOnClickListener {
             customView.setCurrentShapeType(CustomView.ShapeType.LAND)
@@ -37,15 +38,27 @@ class MainActivity : AppCompatActivity() {
         }
 
         cardArchitecture.setOnClickListener {
-            // If you want to handle Architecture or Objects differently, you can
+            customView.setCurrentShapeType(CustomView.ShapeType.ARCHITECTURE)
         }
 
         cardObjects.setOnClickListener {
-            // If you want to handle Architecture or Objects differently, you can
+            customView.setCurrentShapeType(CustomView.ShapeType.OBJECTS)
         }
 
         btnReset.setOnClickListener {
             customView.resetDrawing()
         }
+
+        btnSave.setOnClickListener {
+            saveDrawingToGallery()
+        }
+
+        btnToggle3D.setOnClickListener {
+            customView.toggle3DMode()
+        }
+    }
+
+    private fun saveDrawingToGallery() {
+        // Existing save logic
     }
 }
