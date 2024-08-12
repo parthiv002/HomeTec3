@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/white">
 
 
     <!-- Left-side Options with CardViews -->
@@ -34,7 +35,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@color/white">
 
                 <ImageView
                     android:layout_width="30dp"
@@ -63,7 +65,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@color/white">
 
                 <ImageView
                     android:layout_width="30dp"
@@ -92,7 +95,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@color/white">
 
                 <ImageView
                     android:layout_width="30dp"
@@ -121,7 +125,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@color/white">
 
                 <ImageView
                     android:layout_width="30dp"
@@ -150,7 +155,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@color/white">
 
                 <ImageView
                     android:layout_width="30dp"
@@ -195,7 +201,7 @@
             android:id="@+id/spinnerMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:entries="@array/top_menu_options"/>
+            android:entries="@array/top_menu_options" />
 
         <!-- Reset Button -->
         <Button
