@@ -5,4 +5,10 @@
         <item>Help</item>
         <item>Scale</item>
     </string-array>
+
+    <string-array name="scale_options">
+        <item>mm</item>
+        <item>feet</item>
+        <item>metre</item>
+    </string-array>
 </resources>

@@ -10,5 +10,11 @@ data class Shape(
     val shapeType: CustomView.ShapeType,
     val color: Int,
     var isSelected: Boolean = false
-)
+) {
+    // Compute width and height
+    val width: Float
+        get() = right - left
 
+    val height: Float
+        get() = bottom - top
+}

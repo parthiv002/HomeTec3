@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,173 +8,184 @@
     tools:context=".MainActivity"
     android:background="@color/white">
 
-    <!-- Left-side Options with CardViews -->
-    <LinearLayout
-        android:elevation="10dp"
-        android:id="@+id/leftMenu"
+    <!-- ScrollView containing the left-side options with CardViews -->
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_margin="8dp"
-        android:background="#D3D3D3"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="8dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="8dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="#D3D3D3">
 
-        <!-- CardView for Land -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardLand"
-            android:layout_width="60dp"
-            android:layout_height="80dp"
-            android:layout_marginBottom="8dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="4dp">
+        <LinearLayout
+            android:id="@+id/leftMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:background="@color/white">
+            <!-- CardViews for Land, Room, Wall, Architecture, and Objects -->
+            <!-- Example for Land CardView, others are similar -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardLand"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_land" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:background="@color/white">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Land"
-                    android:textColor="@android:color/black" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_land" />
 
-        <!-- CardView for Room -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardRoom"
-            android:layout_width="60dp"
-            android:layout_height="80dp"
-            android:layout_marginBottom="8dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="4dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Land"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:background="@color/white">
+            <!-- Repeat similar blocks for Room, Wall, Architecture, Objects -->
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_room" />
+            <!-- Example for Room CardView -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardRoom"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Room"
-                    android:textColor="@android:color/black" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:background="@color/white">
 
-        <!-- CardView for Wall -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardWall"
-            android:layout_width="60dp"
-            android:layout_height="80dp"
-            android:layout_marginBottom="8dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="4dp">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_room" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:background="@color/white">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Room"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_wall" />
+            <!-- CardView for Wall -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardWall"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Wall"
-                    android:textColor="@android:color/black" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:background="@color/white">
 
-        <!-- CardView for Architecture -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardArchitecture"
-            android:layout_width="60dp"
-            android:layout_height="80dp"
-            android:layout_marginBottom="8dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="4dp">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_wall" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:background="@color/white">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Wall"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_architecture" />
+            <!-- CardView for Architecture -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardArchitecture"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Architecture"
-                    android:textColor="@android:color/black"
-                    android:textSize="11sp" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:background="@color/white">
 
-        <!-- CardView for Objects -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardObjects"
-            android:layout_width="60dp"
-            android:layout_height="80dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="4dp">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_architecture" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:background="@color/white">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Architecture"
+                        android:textColor="@android:color/black"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_objects" />
+            <!-- CardView for Objects -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardObjects"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Objects"
-                    android:textColor="@android:color/black" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:background="@color/white">
 
-    <!-- Top-right Menu -->
-    <!-- Top-right Menu -->
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_objects" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Objects"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Repeat similar blocks for Room, Wall, Architecture, Objects -->
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Top-right Menu with Reset, Save, Toggle 3D Buttons, Scale Selector, and Compass -->
     <LinearLayout
         android:id="@+id/topMenu"
         android:layout_width="wrap_content"
@@ -184,45 +196,78 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Drop-down Menu -->
-        <!-- Add this inside your existing LinearLayout for buttons -->
         <Button
             android:id="@+id/btnToggle3D"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Toggle 3D"
-            android:layout_marginEnd="6dp"/>
+            android:layout_marginEnd="6dp" />
 
-
-        <!-- Reset Button -->
         <Button
             android:id="@+id/btnReset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Reset" />
 
-        <!-- Save Button -->
         <Button
             android:id="@+id/btnSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Save"
-            android:layout_marginStart="6dp"/>
+            android:layout_marginStart="6dp" />
+
+        <!-- Scale Selector -->
+        <Spinner
+            android:id="@+id/spinnerScale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:entries="@array/scale_options"
+            style="@style/CustomSpinnerStyle"/>
+
+        <!-- Current Scale Text -->
+        <TextView
+            android:id="@+id/tvCurrentScale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Scale: 1:1"
+            android:textColor="@color/black"
+            android:layout_marginStart="6dp"
+            android:textSize="16sp" />
+
+        <!-- Compass Icon -->
+        <ImageView
+            android:id="@+id/compassIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/compass"
+            android:layout_marginStart="16dp"/>
     </LinearLayout>
 
-
-    <!-- Drawing Area -->
-    <com.example.hometec.customview.CustomView
-        android:id="@+id/customView"
-        android:layout_width="312dp"
-        android:layout_height="724dp"
+    <!-- Infinite Scrolling Drawing Area -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollViewDrawing"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_margin="8dp"
-        android:background="@color/white"
-        android:elevation="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:scrollbars="vertical|horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/topMenu"
+        app:layout_constraintStart_toEndOf="@+id/scrollView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/leftMenu"
-        app:layout_constraintTop_toBottomOf="@+id/topMenu"/>
+        app:layout_constraintBottom_toBottomOf="parent">
 
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.example.hometec.customview.CustomView
+                android:id="@+id/customView"
+                android:layout_width="2000dp"
+                android:layout_height="2000dp"
+                android:background="#D7D7D7"
+                android:elevation="10dp" />
+
+        </FrameLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
