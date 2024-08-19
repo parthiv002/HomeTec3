@@ -3,13 +3,12 @@ package com.example.hometec.customview
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
+import android.graphics.Matrix
 import android.graphics.Paint
 import android.graphics.Rect
-import android.graphics.Matrix
 import android.util.AttributeSet
 import android.view.GestureDetector
 import android.view.MotionEvent
-import android.view.View
 import android.view.ViewGroup
 
 class CustomView @JvmOverloads constructor(
@@ -239,6 +238,4 @@ class CustomView @JvmOverloads constructor(
     enum class ShapeType {
         LAND, ROOM, WALL, ARCHITECTURE, OBJECTS, NONE
     }
-
-
 }
