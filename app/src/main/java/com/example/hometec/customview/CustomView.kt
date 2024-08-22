@@ -26,6 +26,8 @@ class CustomView @JvmOverloads constructor(
     private val gestureDetector: GestureDetector
     private var is3D = false
     private val myParameters = MyParameters(this)
+    private var isDraggingVertex = false
+    private var draggingVertex = -1
 
     init {
         gestureDetector = GestureDetector(context, GestureListener())
@@ -150,26 +152,85 @@ class CustomView @JvmOverloads constructor(
                 selectedCardView?.let {
                     offsetX = event.x - it.rect.left
                     offsetY = event.y - it.rect.top
+                    isDraggingVertex = isVertexTouched(event.x, event.y, it.rect)
+                    draggingVertex = if (isDraggingVertex) {
+                        getTouchedVertex(event.x, event.y, it.rect)
+                    } else {
+                        -1
+                    }
                     // Prevent parent views from intercepting touch events
                     parent.requestDisallowInterceptTouchEvent(true)
                 }
             }
             MotionEvent.ACTION_MOVE -> {
-                selectedCardView?.let {
-                    it.rect.offsetTo((event.x - offsetX).toInt(), (event.y - offsetY).toInt())
-                    // Update the right and bottom coordinates based on the new left and top coordinates
-                    it.rect.right = it.rect.left + it.width.toInt()
-                    it.rect.bottom = it.rect.top + it.height.toInt()
+                selectedCardView?.let { cardView ->
+                    if (isDraggingVertex) {
+                        resizeCardView(cardView, event.x, event.y)
+                    } else {
+                        cardView.rect.offsetTo((event.x - offsetX).toInt(), (event.y - offsetY).toInt())
+                        cardView.rect.right = cardView.rect.left + cardView.width.toInt()
+                        cardView.rect.bottom = cardView.rect.top + cardView.height.toInt()
+                    }
                     invalidate()
                 }
             }
             MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
                 selectedCardView = null
+                isDraggingVertex = false
+                draggingVertex = -1
                 // Allow parent views to intercept touch events again
                 parent.requestDisallowInterceptTouchEvent(false)
             }
         }
         return true
+    }
+
+    private fun isVertexTouched(x: Float, y: Float, rect: Rect): Boolean {
+        val tolerance = 30 // Sensitivity for vertex touch detection
+        val vertices = arrayOf(
+            Pair(rect.left.toFloat(), rect.top.toFloat()),
+            Pair(rect.right.toFloat(), rect.top.toFloat()),
+            Pair(rect.right.toFloat(), rect.bottom.toFloat()),
+            Pair(rect.left.toFloat(), rect.bottom.toFloat())
+        )
+        return vertices.any { (vx, vy) ->
+            Math.abs(x - vx) < tolerance && Math.abs(y - vy) < tolerance
+        }
+    }
+
+    private fun getTouchedVertex(x: Float, y: Float, rect: Rect): Int {
+        val tolerance = 30 // Sensitivity for vertex touch detection
+        val vertices = arrayOf(
+            Pair(rect.left.toFloat(), rect.top.toFloat()),
+            Pair(rect.right.toFloat(), rect.top.toFloat()),
+            Pair(rect.right.toFloat(), rect.bottom.toFloat()),
+            Pair(rect.left.toFloat(), rect.bottom.toFloat())
+        )
+        return vertices.indexOfFirst { (vx, vy) ->
+            Math.abs(x - vx) < tolerance && Math.abs(y - vy) < tolerance
+        }
+    }
+
+    private fun resizeCardView(cardView: CardView, x: Float, y: Float) {
+        val rect = cardView.rect
+        when (draggingVertex) {
+            0 -> {
+                rect.left = (x).toInt()
+                rect.top = (y).toInt()
+            }
+            1 -> {
+                rect.right = (x).toInt()
+                rect.top = (y).toInt()
+            }
+            2 -> {
+                rect.right = (x).toInt()
+                rect.bottom = (y).toInt()
+            }
+            3 -> {
+                rect.left = (x).toInt()
+                rect.bottom = (y).toInt()
+            }
+        }
     }
 
     fun setCurrentShapeType(shapeType: ShapeType) {

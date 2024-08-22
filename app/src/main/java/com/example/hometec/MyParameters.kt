@@ -19,7 +19,7 @@ class MyParameters(private val customView: CustomView) {
         style = Paint.Style.FILL
     }
     private var selectedCorner: Corner? = null
-    private val cornerSize = 20
+    private val cornerSize = 30
 
     fun drawPerimeter(canvas: Canvas, rect: Rect) {
         // Draw red perimeter
@@ -57,7 +57,7 @@ class MyParameters(private val customView: CustomView) {
     }
 
     private fun drawCornerPoint(canvas: Canvas, x: Int, y: Int) {
-        canvas.drawCircle(x.toFloat(), y.toFloat(), 15f, pointPaint)
+        canvas.drawCircle(x.toFloat(), y.toFloat(), 25f, pointPaint)
     }
 
     fun handleTouch(event: MotionEvent, rect: Rect): Boolean {
