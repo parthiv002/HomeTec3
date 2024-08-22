@@ -10,6 +10,7 @@ import android.util.AttributeSet
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.ViewGroup
+import com.example.hometec.MyParameters
 
 class CustomView @JvmOverloads constructor(
     context: Context,
@@ -18,12 +19,13 @@ class CustomView @JvmOverloads constructor(
 ) : ViewGroup(context, attrs, defStyleAttr) {
 
     private val cardViews = mutableListOf<CardView>()
-    private var selectedCardView: CardView? = null
+    var selectedCardView: CardView? = null
     private var offsetX = 0f
     private var offsetY = 0f
     private var currentShapeType: ShapeType = ShapeType.NONE
     private val gestureDetector: GestureDetector
     private var is3D = false
+    private val myParameters = MyParameters(this)
 
     init {
         gestureDetector = GestureDetector(context, GestureListener())
@@ -71,6 +73,11 @@ class CustomView @JvmOverloads constructor(
             drawDimensionLines(canvas, cardView, textPaint)
 
             canvas.restore()
+        }
+
+        // Draw perimeter and resize handles using MyParameters
+        selectedCardView?.let {
+            myParameters.drawPerimeter(canvas, it.rect)
         }
     }
 
@@ -127,7 +134,16 @@ class CustomView @JvmOverloads constructor(
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
+        // Handle touch events with MyParameters
+        selectedCardView?.let { cardView ->
+            if (myParameters.handleTouch(event, cardView.rect)) {
+                return true
+            }
+        }
+
+        // Continue with gesture detection
         gestureDetector.onTouchEvent(event)
+
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
                 selectedCardView = cardViews.find { it.rect.contains(event.x.toInt(), event.y.toInt()) }
