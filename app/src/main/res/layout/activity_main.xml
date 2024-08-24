@@ -262,8 +262,8 @@
 
             <com.example.hometec.customview.CustomView
                 android:id="@+id/customView"
-                android:layout_width="2000dp"
-                android:layout_height="2000dp"
+                android:layout_width="1000dp"
+                android:layout_height="1000dp"
                 android:background="#D7D7D7"
                 android:elevation="10dp" />
 

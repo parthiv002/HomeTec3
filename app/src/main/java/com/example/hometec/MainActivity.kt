@@ -66,9 +66,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun saveDrawingToGallery() {
-        // Create a bitmap of the CustomView
-        val bitmap = Bitmap.createBitmap(customView.width, customView.height, Bitmap.Config.ARGB_8888)
-        val canvas = Canvas(bitmap)
+        // Define the scaling factor (e.g., 2x for double size)
+        val scaleFactor = 2
+
+        // Create a scaled-up bitmap of the CustomView
+        val scaledBitmap = Bitmap.createBitmap(customView.width * scaleFactor, customView.height * scaleFactor, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(scaledBitmap)
+
+        // Scale the canvas before drawing the customView
+        canvas.scale(scaleFactor.toFloat(), scaleFactor.toFloat())
         customView.draw(canvas)
 
         val filename = "CustomDrawing_${System.currentTimeMillis()}.png"
@@ -89,7 +95,7 @@ class MainActivity : AppCompatActivity() {
             try {
                 outputStream = resolver.openOutputStream(uri)
                 if (outputStream != null) {
-                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+                    scaledBitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
                 }
                 outputStream?.close()
 
@@ -111,4 +117,3 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
-

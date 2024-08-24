@@ -47,5 +47,6 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation("com.google.android.material:material:1.12.0")
+    implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.23")
 
 }
